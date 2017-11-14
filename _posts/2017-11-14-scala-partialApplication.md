@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      [FP][용어][스칼라] 부분함수
+title:      "(FP,용어,스칼라) 부분함수"
 date:       2017-11-14 15:08:00
 summary:    용어로 알아보는 스칼라 - 부분함수
 categories: FP terms scala
