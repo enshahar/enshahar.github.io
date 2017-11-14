@@ -154,10 +154,10 @@ categories: jekyll pixyll 깃헙
 
 #### 한글폰트
 
-디폴트 설정대로하면 그냥 명조체를 사용한다. 정말 구리다. 바꾸자! 헤더에 폰트 경로를 넣자. 그냥 `index.html`의 `<!-- fonts -->` 바로 밑에 원하는 폰트를 넣어라. 나는 나눔고딕을 넣었다.
+디폴트 설정대로하면 그냥 명조체를 사용한다. 정말 구리다. 바꾸자! 헤더에 폰트 경로를 넣자. pixyll의 헤더는 `_includes/head.html`에 있다. 기존 `<!-- fonts -->` 바로 밑에 원하는 폰트를 넣어라. 나는 나눔고딕을 넣었다.
 
 ```html
-<!-- Fonts -->
+<!--fonts-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 ```
 
