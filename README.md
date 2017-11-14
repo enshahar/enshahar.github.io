@@ -1,10 +1,4 @@
-# Frank Hyunsok Oh's github page
+# Frank Hyunsok Oh(오현석)'s blog
 
-## about this page
-
-This page is github page of Hyunsok Oh.
-
-## template
-
-This page is using the *minimal* theme by [Steve Smith](http://github.com/orderedlist)
+[pixyll.com](http://www.pixyll.com) 테마에 기반을 둔 블로그이다.
 
