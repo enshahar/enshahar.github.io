@@ -89,7 +89,7 @@ Password for 'https://frank-oh@github.com':
 
 `_config.yml` 설정을 적당히 바꾼다.
 
-```
+```yaml
 # Site settings
 title: 사이트 타이틀
 email: 전자우편 주소
