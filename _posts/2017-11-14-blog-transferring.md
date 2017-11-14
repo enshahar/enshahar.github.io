@@ -52,20 +52,20 @@ jekyll 3.6.2
 만들고 나면 다음과 같은 절차를 거쳐서 로컬 컴퓨터에 블로그용 깃헙 리포를 만들고 원격과 연결한다. 난 깃 사용시 *cygwin*의 깃을 사용하기 때문에 다음과 같이 했지만 윈도우 깃 사용자는 GUI를 쓰던 명령줄에서 하던 기본적인 절차는 같다.
 
 ```
-$ cd /cygdrive/e/blog/frank-oh.github.io
+$ cd /cygdrive/e/blog/enshahar.github.io
 $ git init
 $ cat > index.html
 Hello World!
 $ git add *
 $ git commit -m "initial"
 (메시지 생략)
-$ git remote add origin https://frank-oh@github.com/frank-oh/frank-oh.github.io.git
+$ git remote add origin https://enshahar@github.com/enshahar/enshahar.github.io.git
 $ git push -u origin master
-Password for 'https://frank-oh@github.com':
+Password for 'https://enshahar@github.com':
 (메시지 생략)
 ```
 
-이제 잘 되나 브라우저에서 `https://frank-oh.github.io/`를 열어보자.
+이제 잘 되나 브라우저에서 `https://enshahar.github.io/`를 열어보자.
 
 ![Hello World 인덱스페이지]({{ site.url }}/images/helloworld.png)
 
@@ -142,7 +142,7 @@ categories: jekyll pixyll 깃헙
 ---
 ```
 
-크게 두가지 문제가 있다.
+크게 세가지 문제가 있다.
 
 #### 이미지 삽입
 
@@ -150,7 +150,28 @@ categories: jekyll pixyll 깃헙
 
 #### `categories`에 한글 카테코리를 넣은 경우의 경로 문제
 
-`categories`에 `jekyll pixyll 깃헙`과 같이 카테고리를 지정하면 파일 경로가 `https://frank-oh.github.io/jekyll/pixyll/깃헙/날짜/파일명/`처럼 잡히는데, 중간에 있는 한글 경로를 로컬 지킬 서버가 제대로 서비스를 못 해준다. 다행히 깃헙에 `push`하고 나서 보면 깃헙 페이지에서는 제대로 보이므로 한글 카테고리를 지정한 경우 확인이 필요하면 깃헙 페이지에 올려서 확인하라.
+`categories`에 `jekyll pixyll 깃헙`과 같이 카테고리를 지정하면 파일 경로가 `https://enshahar.github.io/jekyll/pixyll/깃헙/날짜/파일명/`처럼 잡히는데, 중간에 있는 한글 경로를 로컬 지킬 서버가 제대로 서비스를 못 해준다. 다행히 깃헙에 `push`하고 나서 보면 깃헙 페이지에서는 제대로 보이므로 한글 카테고리를 지정한 경우 확인이 필요하면 깃헙 페이지에 올려서 확인하라.
+
+#### 한글폰트
+
+디폴트 설정대로하면 그냥 명조체를 사용한다. 정말 구리다. 바꾸자! 헤더에 폰트 경로를 넣자. 그냥 `index.html`의 `<!-- fonts -->` 바로 밑에 원하는 폰트를 넣어라. 나는 나눔고딕을 넣었다.
+
+```html
+<!-- Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+```
+
+페이지에서 폰트를 표시하는 부분의 폰트 클래스를 바꿔야 한다. `_sass/variables.scss`를 보면 폰트 패밀리 지정이 있다.
+
+```scss
+// Typography
+$base-font-size: 14px !default;
+$bold-font-weight: bold !default;
+$font-family: 'Nanum Gothic', 'Merriweather', 'PT Serif', Georgia, 'Times New Roman', serif !default;
+$line-height: 1.5 !default;
+$heading-font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif !default; $heading-font-weight: 900 !default;
+$heading-line-height: 1.25 !default;
+```
 
 몇가지 변경하고 싶은 부분이 있지만 일단 오늘은 여기까지로 마치자.
 
