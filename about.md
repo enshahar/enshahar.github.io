@@ -5,11 +5,15 @@ permalink: /about/
 tags: about
 ---
 
-# Frank Hyunsok Oh (오현석, 吳賢錫)
+# 오현석(Frank Hyunsok Oh, 吳賢錫)
+
+JNFSoft라는 회사에서 개발자 겸 기술 번역가(영어->한국어)로 있습니다. 현재는 고강도 집속 초음파를 사용한 치료 장치에 들어가는 소프트웨어를 개발중입니다. 이 프로젝트는 재밌는 것이 CEF(크로미엄 임베디드 프레임워크), HTML/react.js를 프론트엔드로, 미들웨어는 노드로(프론트엔드와는 웹소켓으로 연결), 백엔드는 C++로 이뤄져 있습니다.
 
 I am a programmer at JNFSoft and a Technical Translator(English to Korean), currently I'm mainly on an exciting unltrasound HIFU(high intensity focused ultrasound) project using CEF(Chromium Embedded Framework), HTML with react.js frontend, node.js based middleware, and C++ backend for controlling the ultrasound devices.
 
-## Experience
+## 경력
+
+호주에 사는 관계로 그냥 영문으로 적겠습니다.
 
 ### Programmer @ JNF Soft (Mar 2017 – Present, Brisbane)
 - eYards merged into JNFSoft
@@ -52,16 +56,16 @@ I am a programmer at JNFSoft and a Technical Translator(English to Korean), curr
 - Document/SW Translation, i18n, l10n (English to Korean)
 - RHEL documents (Guides & Reference Manuals)
 
-## Education
+## 교육
 
-- Korea Advanced Institute of Science and Technology(KAIST)
--- M.S. in Computer Science
--- major study area: Compiler & static analysis of computer program, run-time memory management, functional programming languages
+- Korea Advanced Institute of Science and Technology(KAIST, 한국과학기술원)
+-- M.S. in Computer Science(전산학)
+-- major study area: Compiler & static analysis of computer program, run-time memory management, functional programming languages(프로그래밍 언어 실험실)
 
-- Korea Advanced Institute of Science and Technology 
--- B.S. in Computer Science
+- Korea Advanced Institute of Science and Technology(한국과학기술원)
+-- B.S. in Computer Science(전산학)
 
-## Translated books
+## 번역한 책들
 
 - *Kotlin in Action* (Kotlin in Action), Oct 2017
 - *Function Reactive Programming* (함수형 반응형 프로그래밍), Aug 2017
