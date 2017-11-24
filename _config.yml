@@ -1,8 +1,8 @@
 # Site settings
-title:       오현석(Frank)의 한글 블로그
+title:       오현석(Frank)의 블로그
 email:       frank.oh@jnfsoft.com
 author:      Frank Oh
-description: "A blog of a programmer, translater, and dad"
+description: "전문초보자의 공부방"
 baseurl:     ""
 url:         "https://enshahar.github.io"
 date_format: "%b %-d, %Y"
