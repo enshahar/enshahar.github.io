@@ -218,5 +218,5 @@ Leaving GHCi.
 
 컨트롤-D를 누르면 ghci에서 나올 수 있습니다.
 
-
+다음부터는 진지하게(?) 하스켈을 공부해 보겠습니다. 우선 CIS194의 첫 순서로 [하스켈 소개](https://enshahar.github.io/haskell/cis194/introduction/2017/12/09/cis194-introhaskell/) 부터요. 
 
