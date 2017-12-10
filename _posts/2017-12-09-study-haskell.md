@@ -8,7 +8,7 @@ categories: Haskell Study
 
 하스켈을 공부하려 합니다. 뒤적뒤적 해보다 [하스켈 학습 가이드](https://github.com/bitemyapp/learnhaskell/blob/master/guide-ko.md)라는 문서를 만났습니다. 일단은 여기 나온 내용을 바탕으로 한번 빠르게 익스퍼트 비기너가 되기 위해 노력해보려 합니다. 대충 다음과 같은 단계를 거치는 것 같습니다.
 
-- 하스켈 도구로 [Stack](http://haskellstack.org/) 설치. 하스켈 홈페이지에 있는 하스켈 플랫폼을 초보에겐 권장하지 않네요. 각종 도구를 잘 알기 어렵고 등등 이야가 있다는데 자세히는 안 살펴봤습니다. 난 초보니까 맹목적으로 이 문서를 따라해 보려 합니다.
+- 하스켈 도구로 [Stack](http://haskellstack.org/) 설치. 하스켈 홈페이지에 있는 하스켈 플랫폼을 초보에겐 권장하지 않네요. 각종 도구를 잘 알기 어렵고 등등 이야기가 있다는데 자세히는 안 살펴봤습니다. 난 초보니까 맹목적으로 이 문서를 따라해 보려 합니다.
 - [Yorgey의 CIS194 강의](http://www.seas.upenn.edu/%7Ecis194/spring13/lectures.html) 듣기. 단 프로그래머가 아닌 사람은 [톰슨의 "하스켈-함수형 프로그래밍 기법](http://www.haskellcraft.com/craft3e/Home.html) 책을 통해 기초를 잡으라고 합니다. 기회가 되면 이 책도 다뤄보죠(3판이 나왔는데 저는 2판을 가지고 있습니다.)
 - [Data 61의 강의](https://github.com/data61/fp-course) 듣기. Data 61은 NICTA라는 호주 연구 조직에서 만든 회사입니다. 제가 브리즈번사는데 이민올때는 몰랐는데 알고보니 골수 함수 프로그래머들이 몇몇 자리잡고 있는 동네더군요(안타깝게도 그렇다고 그 아저씨들과 교류가 있거나 하지는 않습니다. 전 C++/자바 프로그래머고 먹고 살기 바빠서T.T) 어쨌든 "Data 61 하스켈 강의" 또는 "NICTA 하스켈 강의"라고 하면 이 강의를 말합니다. Yorgey의 강의를 다 듣고 나서 이 강의를 들으라고 하네요.
 - 위 두 강의를 마치고 나면 [Bryan O'Sullivan의 강의](https://github.com/bos)를 들으랍니다.
