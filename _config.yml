@@ -4,7 +4,7 @@ email:       frank.oh@jnfsoft.com
 author:      Frank Oh
 description: "전문초보자의 공부방"
 baseurl:     ""
-url:         "https://enshahar.github.io"
+url:         "https://enshahar.com"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
