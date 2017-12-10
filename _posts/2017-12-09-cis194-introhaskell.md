@@ -125,7 +125,7 @@ y = x * 2  -- 타입 선언 없이 값만 지정한다
 
 `ghci declaration.hs`하면 `*Main>`이라는 프럼프트가 나오는데 거기서 `x`와 `y`의 값을 살펴볼 수 있다.
 
-```
+```haskell
 *Main> x
 10
 *Main> y 
@@ -153,7 +153,7 @@ y = x * 2  -- 타입 선언 없이 값만 지정한다
 - `Char`는 유니코드 문자를 표현하는 타입이다.
 - `String`은 `Char`의 리스트(리스트에 대해서는 나중에 다룸)지만, 문자열 표현을 허용한 타입이다.
 
-```
+```haskell
 -- types.hs
 -- 기계에 따라 범위가 정해지는 정수 타입
 i :: Int
@@ -196,7 +196,7 @@ s = "Hello, Haskell!"
 
 ghci로 이 코드를 테스트해보면 다음과 같다.
 
-```
+```haskell
 E:\blog\example\haskell\cis194\01_intro
 λ ghci types.hs
 GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
@@ -300,14 +300,14 @@ Ok, modules loaded: Main.
 
 따라서 위 `i+n`은 다음과 같이 해야 한다.
 
-```
+```haskell
 *Main> (fromIntegral n) + n
 2469135781975308643974681964669974699744699749068
 ```
 
 `div`는 정수 나눗셈, `/`는 부동소수점 수 나눗셈이다.
 
-```
+```haskell
 *Main> i/i
 
 <interactive>:3:1: error:
