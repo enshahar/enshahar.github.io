@@ -2,7 +2,7 @@
 layout:     post
 title:      "[하스켈 기초] 하스켈 공부법"
 date:       2017-12-09 22:47:00
-summary:    "[하스켈기초] 하스켈 익스퍼트 비기너되기"
+summary:    "하스켈 익스퍼트 비기너가 되기 위한 여정을 시작합니다!"
 categories: Haskell Study
 ---
 

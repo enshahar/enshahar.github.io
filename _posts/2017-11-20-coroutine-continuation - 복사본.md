@@ -2,7 +2,7 @@
 layout:     post
 title:      "[seed] 코루틴과 컨티뉴에이션"
 date:       2017-11-17 11:21:00
-summary:    "[seed] 코루틴과 컨티뉴에이션에 대해. 나중에 정식 글을 쓰기 위한 씨앗."
+summary:    "코루틴과 컨티뉴에이션에 대해. 나중에 정식 글을 쓰기 위한 씨앗."
 categories: SEEDS coroutine continuation
 ---
 

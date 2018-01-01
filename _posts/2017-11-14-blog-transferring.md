@@ -2,7 +2,7 @@
 layout:     post
 title:      Github Page Blog Installation
 date:       2017-11-14 14:15:14
-summary:    윈도우에 지킬을 사용해 깃헙 페이지 블로그 설치하기
+summary:    "윈도우에 지킬을 사용해 깃헙 페이지 블로그 설치하기"
 categories: 블로그 jekyll pixyll
 ---
 

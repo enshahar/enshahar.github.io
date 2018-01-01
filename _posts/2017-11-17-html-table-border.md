@@ -2,7 +2,7 @@
 layout:     post
 title:      "[TIL] HTML 테이블과 보더"
 date:       2017-11-17 11:21:00
-summary:    "[TIL] HTLM 테이블과 테이블 보더에 대해 정리"
+summary:    "HTLM 테이블과 테이블 보더에 대해 정리"
 categories: TIL HTML TABLE BORDER
 ---
 

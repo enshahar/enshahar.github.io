@@ -2,7 +2,7 @@
 layout:     post
 title:      "(FP,용어,스칼라) 부분함수"
 date:       2017-11-14 15:08:00
-summary:    용어로 알아보는 스칼라 - 부분함수
+summary:    "부분함수라는 용어를 소개하고, 스칼라에서 부분함수를 어떻게 정의하고 활용하는지 소개한다"
 categories: FP terms scala
 ---
 
