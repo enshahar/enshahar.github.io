@@ -367,7 +367,7 @@ hanoi n src tgt tmp = append (append (hanoi (n-1) src tmp tgt) [(src,tgt)]) (han
 
 하지만 함수 호출에 괄호가 많아 보기가 좋지 않다. `mod`를 백틱을 사용해 중위 호출한 것을 본따 다음과 같이 백틱을 활용해 `append` 호출을 중위 호출로 바꾸는 편이 낫다.
 
-```
+```haskell
 hanoi2 :: Integer -> Peg -> Peg -> Peg -> [Move]
 hanoi2 0 src tgt tmp = []
 hanoi2 n src tgt tmp = (hanoi2 (n-1) src tmp tgt) `append` [(src,tgt)]  `append` (hanoi2 (n-1) tmp tgt src) 
@@ -375,7 +375,7 @@ hanoi2 n src tgt tmp = (hanoi2 (n-1) src tmp tgt) `append` [(src,tgt)]  `append`
 
 백틱을 사용해 중위 연산자처럼 쓸때는 함수 적용보다 우선순위가 낮다는 점을 활용해 괄호를 아예 없애면 다음과 같이 쓸 수도 있다.
 
-```
+```haskell
 hanoi3 :: Integer -> Peg -> Peg -> Peg -> [Move]
 hanoi3 0 src tgt tmp = []
 hanoi3 n src tgt tmp = hanoi3 (n-1) src tmp tgt `append` [(src,tgt)]  `append` hanoi3 (n-1) tmp tgt src

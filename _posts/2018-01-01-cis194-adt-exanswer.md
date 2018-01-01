@@ -91,6 +91,3 @@ map f [x1, x2, ...] == [f x1, f x2, ...]
 parse :: String -> [LogMessage]
 parse s = map parseMessage (lines s)
 ```
-
-
-

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "[하스켈][팁] 하스켈 연산자 검색
+title:      "[하스켈][팁] 하스켈 연산자 검색"
 date:       2018-01-01 22:05:00
 summary:    "하스켈 연산자를 검색하고 싶을 때 사용할 수 있는 도구 hoogle을 소개한다."
 categories: Haskell Hoogle operator search
