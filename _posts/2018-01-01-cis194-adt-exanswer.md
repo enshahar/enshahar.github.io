@@ -262,7 +262,7 @@ whatWentWrong'' = map getString . filter (\x->getSeverity(x) >= 50) . filter isE
 
 ```haskell
 whatWentWrong''' :: [LogMessage] -> [String]
-whatWentWrong''' = map getString . filter (((<=) 50) . getSeverity) . filter isError
+whatWentWrong''' = map getString . filter ((<=) 50 . getSeverity) . filter isError
 ```
 
 #### `whatWentWrong`, `whatWentWrong'`, `whatWentWrong''`, `whatWentWrong'''`이 같은지 검사
