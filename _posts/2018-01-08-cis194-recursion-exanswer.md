@@ -127,7 +127,7 @@ zip3 [] [4,5] [6] = []
 
 ```haskell
 mk3Tuples :: [Integer] -> [(Integer,Integer,Integer)]
-mk3Tuples xs = zip3 xs (drop 1 xs) (drop 1 (drop 1 xs))
+mk3Tuples xs = zip3 xs (drop 1 xs) (drop 2 xs)
 ```
 
 이제 리스트를 `mk3Tuples`로 3-튜플로 만들고, `filter`를 써서 가운데 값이 더 큰 3-튜플만 남기자. 3-튜플에 대해 패턴매칭을 사용하면 쉽게 지역 최댓값인지 판단하는 술어함수를 만들 수 있다. 람다로 정의하고 따로 타입은 표시하지 않는다.
@@ -164,7 +164,7 @@ isLocalMaxima = \(x,y,z) -> x < y && y > z
 tuple3get2nd = \(_,y,_) -> y
 
 mk3Tuples :: [Integer] -> [(Integer,Integer,Integer)]
-mk3Tuples xs = zip3 xs (drop 1 xs) (drop 1 (drop 1 xs))
+mk3Tuples xs = zip3 xs (drop 1 xs) (drop 2 xs)
 
 localMaxima :: [Integer] -> [Integer]
 localMaxima xs = map tuple3get2nd (filter isLocalMaxima (mk3Tuples xs))
