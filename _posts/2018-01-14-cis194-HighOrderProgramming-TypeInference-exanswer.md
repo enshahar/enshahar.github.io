@@ -211,7 +211,7 @@ copy' = foldr (\x xs -> x : xs) []
 
 이를 활용하면 쉽게 `map`을 구현할 수 있다. `:`를 적용하기 전에 원소에 `map`의 인자로 전달받은 함수를 적용해 주면 된다.
 
-```
+```haskell
 map' :: (a -> b) -> [a] -> [b]
 map' f = foldr (\x xs -> (f x) : xs) []
 ```
@@ -242,7 +242,7 @@ map'' f = foldr ((:).f) []
 
 `foldl`과 `foldr`의 결과는 다음과 같다.
 
-```
+```haskell
 foldr f zr [x1, x2, ..., xn] == x1 ‘f‘ (x2 ‘f‘ ... (xn ‘f‘ zr)...)
 foldl g zl [x1, x2, ..., xn] == (...((zl ‘g‘ x1) ‘g‘ x2) ‘g‘...) ‘g‘ xn
 ```
@@ -387,7 +387,7 @@ sieveSundaram n =
 
 ### 하나로 합치기
 
-한편 `Data.Set`을 임포트하고 나면 `filter`나 `map`을 사용할 때 *ambigous* 하다는 오류가 나온다. 이를 방지하기 위해서는 `import qualified`를 사용해 `Data.Set`에서 임포트한 함수 앞에 꼭 한정사를 붙이게 만들어야 한다. 이를 활용해 순다람 체 전체 코드를 정리하면 다음과 같다.
+한편 `Data.Set`을 임포트하고 나면 `filter`나 `map`을 사용할 때 *ambiguous* 하다는 오류가 나온다. 이를 방지하기 위해서는 `import qualified`를 사용해 `Data.Set`에서 임포트한 함수 앞에 꼭 한정사를 붙이게 만들어야 한다. 이를 활용해 순다람 체 전체 코드를 정리하면 다음과 같다.
 
 ```haskell
 import qualified Data.Set as Set
