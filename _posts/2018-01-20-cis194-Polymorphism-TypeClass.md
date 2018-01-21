@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "[하스켈 기초][CIS194] 다형성과 타입 클래스
+title:      "[하스켈 기초][CIS194] 다형성과 타입 클래스"
 date:       2018-01-14 21:45:00
-summary:    "CIS194 4강 "
+summary:    "CIS194 5강 다형성에 대해 설명하고 타입 클래스에 대해 설명한다. 연습 문제에서는 타입 클래스를 활용해 DSL을 편리하게 작성할 수 있음을 보여준다."
 categories: Haskell CIS194 High Order Programming Exercise Solution
 ---
 
@@ -519,31 +519,4 @@ Nothing
 $ mul (var "x") (add (var "y") (var "x"))
 Just 54
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
