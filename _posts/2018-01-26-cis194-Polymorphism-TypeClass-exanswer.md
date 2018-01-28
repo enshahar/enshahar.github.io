@@ -8,7 +8,7 @@ categories: Haskell CIS194 Polymorphism and Type Class Exercise Solution
 
 # 다형성과 타입 클래스 연습문제 풀이
 
-[CIS194 5강 다형성과 타입 클래스] 연습문제 풀이입니다.
+[CIS194 5강 다형성과 타입 클래스](http://enshahar.com/haskell/cis194/polymorphism/and/type/class/2018/01/14/cis194-Polymorphism-TypeClass/) 연습문제 풀이입니다.
 
 ## 연습문제 1
 
@@ -270,7 +270,7 @@ type VarExprT = M.Map String Integer -> Maybe Integer
 더 쉬운 것부터 구현해보자. `VarExprT`를 `HasVars`의 인스턴스로 만들기 위해 어떤 일을 해야 할까? `M.Map` 타입으로 정의된 변수 매핑에서 변수 값을 가져오는 함수를 정의하면 된다. `M.Map`에 대해 정의된 `lookup` 함수가 바로 이런 일을 한다.
 
 ```haskell
-instance HasVars MapExpr where
+instance HasVars VarExprT where
   var = M.lookup
 ```
 
@@ -279,7 +279,8 @@ instance HasVars MapExpr where
 `lit a`는 변수 매핑과 상관 없이 무조건 정해준 수를 반환해주면 된다.
 
 ```haskell
-lit a = \_ -> Just a
+instance Expr VarExprT
+  lit a = \_ -> Just a
 ```
 
 `mul e1 e2`는 `e1`에 대해 매핑을 적용해 얻은 값과 `e2`에 대해 매핑을 적용해 얻은 값을 조합해주면 된다. 이때 두 값이 `Maybe Integer`이므로 그 둘을 조합할 방법을 생각해봐야 한다. `Data.Maybe`에 보면 `isNothing`이 있다. 이를 활용하면 다음과 같이 작성할 수 있을 것이다. `fromJust`는 `Just v`에서 `Just`를 벗겨내고 `v`만 돌려주는 함수다.
@@ -296,7 +297,7 @@ lit a = \_ -> Just a
       else Just(fromJust (e1 m) * fromJust (e2 m))
 ```
 
-다른 바식으로 생각해 보자. 우리는 `e1 m`과 `e2 m`이라는 두 `Maybe Integer` 값에 대해 `+`라는 이항 연산을 적용하고 싶다. 즉, `(+) :: Integer -> Integer -> Integer`를 `Maybe Integer -> Maybe Integer -> Maybe Integer`로 바꿔주는 함수가 있다면 좋을 것이다.
+다른 방식으로 생각해 보자. 우리는 `e1 m`과 `e2 m`이라는 두 `Maybe Integer` 값에 대해 `+`라는 이항 연산을 적용하고 싶다. 즉, `(+) :: Integer -> Integer -> Integer`를 `Maybe Integer -> Maybe Integer -> Maybe Integer`로 바꿔주는 함수가 있다면 좋을 것이다.
 
 `hoolge`에서 `liftA2`를 보면 `Applicative f => (a -> b -> c) -> f a -> f b -> f c`으로, `(Integer -> Integer -> Integer) -> Maybe Integer -> Maybe Integer -> Maybe Integer)`라는 우리가 만들고 싶은 함수와 맞아 떨어지는 것 같다.
 
