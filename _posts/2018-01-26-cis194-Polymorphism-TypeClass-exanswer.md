@@ -6,9 +6,11 @@ summary:    "CIS194 5강 다형성과 타입 클래스 연습문제 풀이입니
 categories: Haskell CIS194 Polymorphism and Type Class Exercise Solution
 ---
 
+# 다형성과 타입 클래스 연습문제 풀이
+
 [CIS194 5강 다형성과 타입 클래스] 연습문제 풀이입니다.
 
-# 연습문제 1
+## 연습문제 1
 
 그냥 정의대로 하면 된다. 날로먹기. 다만 이제부터는 모듈안에 연습문제 답을 넣기로 하자.
 
@@ -25,7 +27,7 @@ eval (Add e1 e2) = eval e1 + eval e2
 eval (Mul e1 e2) = eval e1 * eval e2
 ```
 
-# 연습문제 2
+## 연습문제 2
 
 `parserExp`의 타입을 보면 `(Integer -> a) -> (a -> a -> a) -> (a -> a -> a) -> String -> Maybe a`이기 때문에 `parserExp Lit Add Mul 문자열`을 한 값의 타입은 `Maybe ExprT`가 된다. 따라서 그 값이 `Nothing`인지 아닌지에 따라 처리하면 된다. 
 
@@ -54,7 +56,7 @@ evalStr :: String -> Maybe Integer
 evalStr s = fmap eval (parseExp Lit Add Mul s)
 ```
 
-# 연습문제 3
+## 연습문제 3
 
 일단 기본적인 틀은 다음과 같을 것이다.
 
@@ -99,14 +101,14 @@ instance Expr ExprT where
   mul e1 e2 = Mul e1 e2
 ```
 
-# 연습문제 4
+## 연습문제 4
 
 맨 처음엔 이게 무슨 소리지 하고 고민할 지도 모르겠다. 하지만 무조건 타입 클래스의 인스턴스를 만들려면 `instance 클래스 대상타입 where`과 같이 시작해야 한다는 사실부터 기억한다면 조금 고민이 줄 것이다. 물론 대상 타입 자체가 타입 인자가 있는 타입이라면 `instance 클래스 (대상타입 타입인자1 ... 타입인자n) where`로 시작하면 된다. 그 후 타입 클래스가 요구하는 메서드에 대한 구현이 들어가면 된다.
 
 타입 클래스가 요구하는 메서드의 타입을 살펴보면 가능한 구현이 어떤 것이 될지 유추할 수 있다.
 
 
-## `Expr Integer`
+### `Expr Integer`
 
 `Integer`를 생각해보자. 조금 전 설명한 대로 하면 다음과 같이 일단 뼈대를 작성할 수 있다.
 
@@ -139,7 +141,7 @@ instance Expr Integer where
   mul e1 e2 = e1 * e2
 ```
 
-## `Expr Bool`, `Expr MinMax`, `Expr Mod7`
+### `Expr Bool`, `Expr MinMax`, `Expr Mod7`
 
 특별히 고민할 것이 없다. 그냥 주어진 로직대로 계산하자.
 
@@ -206,17 +208,141 @@ Just (Mod7 0)
 
 같은 식을 어떤 타입으로 해석하느냐에 따라 타입 클래스가 제대로 작동해서 우리가 원하는 값이 나옴을 볼 수 있다.
 
+## 연습문제 5
 
+`Expr Bool`등의 클래스 확장을 만들어 봤으므로, 타입 클래스를 적용하는 기본 틀은 익혔을 것이다. 여기서 만들어야 할 `Expr` 타입 클래스 인스턴스는 `Expr Program`이다. 
 
+모듈 정의와 타입 클래스 인스턴스 시작 부분은 다음과 같다.
 
+```haskell
+-- Ex5.hs
+{-# LANGUAGE TypeSynonymInstances FlexibleInstances #-}
+module Ex5(compile) where
+import StackVM
+import Parser
 
+-- Orphan instance Expr Program 오류 방지를 위해 여기서 Expr 클래스 정의
+class Expr a where
+  lit :: Integer -> a
+  add :: a -> a -> a
+  mul :: a -> a -> a
 
+instance Expr Program where
+```
 
+정수 상수는 스택 탑에 정수를 넣으면 된다.
 
+```haskell
+    lit v = [StackVM.PushI v]
+```
 
+덧셈은 첫번째 인자를 계산하고 두번째 인자를 계산하면 스택 맨 위 2 원소가 첫번째 인자와 두번째 인자가 된다는 성질을 사용해서, 두 인자를 계산하는 프로그램을 서로 이어붙인 다음에, `Add` 연산을 추가해주면 된다. 곱셈도 `Add`가 `Mul`이 된다는 점을 제외하고는 덧셈과 동일하다.
 
+```haskell
+    add p1 p2 = p1 ++ p2 ++ [StackVM.Add]
+    mul p1 p2 = p1 ++ p2 ++ [StackVM.Mul]
+```
 
+이제 앞의 연습문제에서 파서와 `Expr` 인스턴스를 연결했던 것처럼 연결하면 프로그램을 컴파일할 수 있다.
 
+```haskell
+compile :: String -> Maybe Program
+compile = parseExp lit add mul
+```
 
+## 연습문제 6
+
+`HasVars` 자체는 그다지 복잡할 게 없다. 문제에 주어진 내용을 코드로 옮기면 된다.
+
+```haskell
+class HasVars a where
+  var :: String -> a
+```
+
+`VarExprT`는 `HasVars`의 인스턴스인 동시에 `Expr`의 인스턴스인 데이터 타입이며, `(M.Map String Integer -> Maybe Integer)` 타입의 별명로 정의하면 된다.
+
+```haskell
+type VarExprT = M.Map String Integer -> Maybe Integer
+```
+
+(여기서 `M.Map String Integer`이 `M.Map`과 `String`과 `Integer`라는 세 인자를 의미하는 것이 아니라 `M.Map`이라는 타입의 타입 파라미터로 `String`과 `Integer`를 적용한 것이라는 점을 노파심에 적어둔다.)
+
+더 쉬운 것부터 구현해보자. `VarExprT`를 `HasVars`의 인스턴스로 만들기 위해 어떤 일을 해야 할까? `M.Map` 타입으로 정의된 변수 매핑에서 변수 값을 가져오는 함수를 정의하면 된다. `M.Map`에 대해 정의된 `lookup` 함수가 바로 이런 일을 한다.
+
+```haskell
+instance HasVars MapExpr where
+  var = M.lookup
+```
+
+`Expr`의 인스턴스는 연습문제 3~5에서 연습했던 것과 다르지 않다. 타입만 맞추고, 문맥에 맞게 각 연산을 정의해주면 된다.
+
+`lit a`는 변수 매핑과 상관 없이 무조건 정해준 수를 반환해주면 된다.
+
+```haskell
+lit a = \_ -> Just a
+```
+
+`mul e1 e2`는 `e1`에 대해 매핑을 적용해 얻은 값과 `e2`에 대해 매핑을 적용해 얻은 값을 조합해주면 된다. 이때 두 값이 `Maybe Integer`이므로 그 둘을 조합할 방법을 생각해봐야 한다. `Data.Maybe`에 보면 `isNothing`이 있다. 이를 활용하면 다음과 같이 작성할 수 있을 것이다. `fromJust`는 `Just v`에서 `Just`를 벗겨내고 `v`만 돌려주는 함수다.
+
+```haskell
+-- 맨 앞에 import Data.Maybe를 해야 함
+  add e1 e2 = \m ->
+    if isNothing (e1 m) || isNothing (e2 m) 
+      then Nothing
+      else Just(fromJust (e1 m) + fromJust (e2 m))
+  mul e1 e2 = \m -> 
+    if isNothing (e1 m) || isNothing (e2 m) 
+      then Nothing
+      else Just(fromJust (e1 m) * fromJust (e2 m))
+```
+
+다른 바식으로 생각해 보자. 우리는 `e1 m`과 `e2 m`이라는 두 `Maybe Integer` 값에 대해 `+`라는 이항 연산을 적용하고 싶다. 즉, `(+) :: Integer -> Integer -> Integer`를 `Maybe Integer -> Maybe Integer -> Maybe Integer`로 바꿔주는 함수가 있다면 좋을 것이다.
+
+`hoolge`에서 `liftA2`를 보면 `Applicative f => (a -> b -> c) -> f a -> f b -> f c`으로, `(Integer -> Integer -> Integer) -> Maybe Integer -> Maybe Integer -> Maybe Integer)`라는 우리가 만들고 싶은 함수와 맞아 떨어지는 것 같다.
+
+한번 테스트해보자.
+
+```ghci
+E:\blog\example\haskell\cis194\05_TypeClass
+λ ghci
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from C:\Users\hyunsok\AppData\Roaming\ghc\ghci.conf
+Prelude> import Control.Applicative
+Prelude Control.Applicative> liftA2 (+) Nothing (Just 10)
+Nothing
+Prelude Control.Applicative> liftA2 (+) (Just 10) Nothing
+Nothing
+Prelude Control.Applicative> liftA2 (+) (Just 10) (Just 20)
+Just 30
+Prelude Control.Applicative>
+```
+
+우리가 원하는대로 작동한다. 이를 사용해 다음과 같이 `add`와 `mul`을 쉽게 구현할 수 있다.
+
+```haskell
+-- 맨 앞에 import Control.Applicative를 해야 함
+add e1 e2 = \m -> liftA2 (+) (e1 m) (e2 m)
+mul e1 e2 = \m -> liftA2 (*) (e1 m) (e2 m)
+```
+
+이를 사용해 예제를 실행하면 다음과 같다. 변수 값을 바꾸면 `mul (var "x") (add (var "y") (var "x"))`라는 같은 식에서 다른 결과가 나옴을 확인할 수 있다.
+
+```haskell
+E:\blog\example\haskell\cis194\05_TypeClass
+λ ghci Ex6.hs
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from C:\Users\hyunsok\AppData\Roaming\ghc\ghci.conf
+[1 of 1] Compiling Ex6              ( Ex6.hs, interpreted )
+Ok, modules loaded: Ex6.
+*Ex6> withVars [("x", 6)] $ add (lit 3) (var "x")
+Just 9
+*Ex6> withVars [("x", 6)] $ add (lit 3) (var "y")
+Nothing
+*Ex6> withVars [("x", 6), ("y", 3)] $ mul (var "x") (add (var "y") (var "x"))
+Just 54
+*Ex6> withVars [("x", 16), ("y", 3)] $ mul (var "x") (add (var "y") (var "x"))
+Just 304
+*Ex6>
+```
 
 
