@@ -126,6 +126,7 @@ instance Expr Integer where
 여기서 `lit v`의 타입은 `Integer->Integer` 타입이 되고 그냥 `v` 값을 그대로 반환하면 쉽게 타입을 맞출 수 있음을 알 수 있다. 마찬가지로 `add e1 e2`는 타입이 `Integer -> Integer -> Integer`이기 때문에 `(+)`로 두 인자를 더해주면 된다는 사실을 쉽게 유추할 수 있다. `mul`도 다르지 않다.
 
 >##### `Ex3.Expr` 내의 `lit` 등의 메서드 외부 노출
+>
 >`Ex3.hs`에서 `module Ex3(Expr) where`이라고 모듈을 정의하면 `Expr`은 모듈 밖에서 볼 수 있지만 `lit`, `mul`, `add` 메서드를 모듈 밖에서 볼 수 없어서 인스턴스를 정의할 수 없다. 따라서 `module Ex3(Expr(lit,add,mul)) where`와 같이 `Expr`이라는 타입 클래스에서 모듈 외부에 노출시킬 메서드 이름을 함께 정의해야 한다.
 
 이런 과정을 거쳐 코드를 정리하면 다음과 같다.
