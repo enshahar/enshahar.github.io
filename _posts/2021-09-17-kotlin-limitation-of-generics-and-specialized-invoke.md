@@ -80,8 +80,8 @@ abstract class FOO {
   abstract fun doit()
     companion object {
       operator fun <T:Any> invoke(v:T) = object: FOO() { override fun doit() { println("Any: ${v}") } }
-        operator fun <T:Number> invoke(v:T) = object: FOO() { override fun doit() { println("Number: ${v}") } }
-        operator fun <T:Int> invoke(v:T) = object: FOO() { override fun doit() { println("Int: ${v}") } }
+      operator fun <T:Number> invoke(v:T) = object: FOO() { override fun doit() { println("Number: ${v}") } }
+      operator fun <T:Int> invoke(v:T) = object: FOO() { override fun doit() { println("Int: ${v}") } }
     }
 }
 
