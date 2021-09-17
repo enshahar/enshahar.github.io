@@ -78,11 +78,12 @@ AN: (test, 1)
 $ cat Foo2.kt
 abstract class FOO {
   abstract fun doit()
-    companion object {
-      operator fun <T:Any> invoke(v:T) = object: FOO() { override fun doit() { println("Any: ${v}") } }
-      operator fun <T:Number> invoke(v:T) = object: FOO() { override fun doit() { println("Number: ${v}") } }
-      operator fun <T:Int> invoke(v:T) = object: FOO() { override fun doit() { println("Int: ${v}") } }
-    }
+
+  companion object {
+    operator fun <T:Any> invoke(v:T) = object: FOO() { override fun doit() { println("Any: ${v}") } }
+    operator fun <T:Number> invoke(v:T) = object: FOO() { override fun doit() { println("Number: ${v}") } }
+    operator fun <T:Int> invoke(v:T) = object: FOO() { override fun doit() { println("Int: ${v}") } }
+  }
 }
 
 fun main() {
