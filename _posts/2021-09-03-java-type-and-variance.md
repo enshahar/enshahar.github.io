@@ -3,7 +3,7 @@ layout:     post
 title:      "[프로그래밍기초]정적 타입 지정과 변성"
 date:       2021-09-03 17:26:00
 summary:    "정적 타입 지정과 변성에 대해 정리"
-categories: Haskell CIS194 Folds Monoids
+categories: Java
 ---
 
 # 정적 타입 지정과 변성
