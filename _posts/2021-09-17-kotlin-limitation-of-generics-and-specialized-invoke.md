@@ -13,12 +13,12 @@ categories: Haskell CIS194 Folds Monoids
 코틀린에서는(자바에서도) 클래스 이름은 같지만 제네릭 타입 파라미터만 다른 클래스들을 정의할 수 없다. 
 
 ```
-$cat Foo.kt
+$ cat Foo.kt
 class FOO<T:Any> { fun doit() { println("Any") } }
 class FOO<T:Number> { fun doit() { println("Number") } }
 class FOO<T:Int> { fun doit() { println("Int") } }
 
-$kotlinc Foo.kt
+$ kotlinc Foo.kt
 Foo.kt:1:7: error: redeclaration: FOO
 class FOO<T:Any> { fun doit() { println("Any") } }
       ^
@@ -33,7 +33,7 @@ class FOO<T:Int> { fun doit() { println("Int") } }
 스크립트에서는 클래스 재정의 에러는 안나지만(아마도 컴파일러가 스크립트 모드일 때는 줄마다 다른 패키지 안에 해당 클래스의 정의를 넣기 때문이 아닌가 싶다), 타입 소거 때문에 다양한 타입 파라미터를 가지는 가장 적합한 타입 파라미터를 못 찾아줘서 타입별 특화(specialization)가 안된다.
 
 ```
-$cat Foo.kts
+$ cat Foo.kts
 class FOO<T:Any> { fun doit() { println("Any") } }
 class FOO<T:Number> { fun doit() { println("Number") } }
 class FOO<T:Int> { fun doit() { println("Int") } }
@@ -42,7 +42,7 @@ FOO<String>().doit()
 FOO<Int>().doit()
 FOO<Double>().doit()
 
-$kotlinc -script Foo.kts
+$ kotlinc -script Foo.kts
 Int
 Int
 Int
@@ -53,7 +53,7 @@ class FOO<T:Int> { fun doit() { println("Int") } }
 
 ## 함수 오버로딩 해소(overloading resolution)를 활용한 최적 타입 결정
 
-이럴때는 함수 오버로딩을 사용하면 제네릭 함수의 타입을 잘 알아맞춰주는 것 같다.
+이럴때는 함수 오버로딩을 사용하면 제네릭 함수의 타입을 잘 알아맞춰주는 것 같다. 오버로딩 해소시 함수 파라미터 타입이 가장 잘 들어맞는 함수를 사용하기 때문에 적절한 클래스 타입을 찾아줄 수 있다.
 
 ```
 >>> fun <T1:Any, T2:Any> bar(v1:T1,v2:T2) { println("AA: ${v1 to v2}") }
@@ -99,4 +99,22 @@ Any: 10
 Int: 10
 Any: false
 Number: 10.0
+```
+
+다만, 오버로딩이 이뤄질 수 없는 경우에는 이런 기법을 사용할 수 없다. 자바에서는 함수 반환 타입이 함수 시그니처에 들어가지 않기 때문에 반환 타입만 다른 오버로딩 함수를 정의할 수는 없다. 이럴때는 어쩔 수 없이 메서드 이름을 달리 하거나 가짜 인자를 도입해야 한다.
+
+```
+$ cat Foo3.kt
+abstract class Foo3 {
+  abstract fun doit()
+  companion object {
+    operator fun <T:Any> invoke() = object: Foo3() { override fun doit() { println("Any") } }
+    operator fun <T:Number> invoke() = object: Foo3() { override fun doit() { println("Number") } }
+    operator fun <T:Int> invoke() = object: Foo3() { override fun doit() { println("Int") } }
+  }
+}
+
+$ kotlinc Foo3.kt
+Foo3.kt:5:6: error: conflicting overloads: public final operator fun <T : Any> invoke(): ...
+...
 ```
