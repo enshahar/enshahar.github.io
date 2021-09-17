@@ -3,7 +3,7 @@ layout:     post
 title:      "[코틀린] 코틀린 제네릭 클래스의 타입 특화 제약과 invoke를 통한 해결방법"
 date:       2021-09-17 11:10:00
 summary:    "코틀린 제네릭 타입의 타입 특화 관련 문제점과 invoke와 오버로드 해소를 통해 이런 문제점을 어떻게 우회할 수 있는지 설명함"
-categories: Haskell CIS194 Folds Monoids
+categories: kotlin operator invoke
 ---
 
 # 코틀린 제네릭스의 타입 특화 제약과 invoke를 통한 해결 방법
