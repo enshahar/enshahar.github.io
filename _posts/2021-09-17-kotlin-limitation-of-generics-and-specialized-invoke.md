@@ -55,6 +55,7 @@ class FOO<T:Int> { fun doit() { println("Int") } }
 
 이럴때는 함수 오버로딩을 사용하면 제네릭 함수의 타입을 잘 알아맞춰주는 것 같다.
 
+```
 >>> fun <T1:Any, T2:Any> bar(v1:T1,v2:T2) { println("AA: ${v1 to v2}") }
 >>> fun <T1:Number, T2:Any> bar(v1:T1,v2:T2) { println("NA: ${v1 to v2}") }
 >>> fun <T1:Any, T2:Number> bar(v1:T1,v2:T2) { println("AN: ${v1 to v2}") }
@@ -67,6 +68,7 @@ NA: (1, test)
 AA: (test, test)
 >>> bar("test",1)
 AN: (test, 1)
+```
 
 ## `invoke`와 동반객체를 사용한 특화 타입 객체 생성 방법
 
