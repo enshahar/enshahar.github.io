@@ -7,17 +7,22 @@ tags: about
 
 # 오현석(Frank Hyunsok Oh, 吳賢錫)
 
-JNFSoft라는 회사에서 개발자 겸 기술 번역가(영어->한국어)로 있습니다. 현재는 고강도 집속 초음파를 사용한 치료 장치에 들어가는 소프트웨어를 개발중입니다. 이 프로젝트는 재밌는 것이 CEF(크로미엄 임베디드 프레임워크), HTML/react.js를 프론트엔드로, 미들웨어는 노드로(프론트엔드와는 웹소켓으로 연결), 백엔드는 C++로 이뤄져 있습니다.
+현재 mobility42라는 한국 회사에서 기술이사로 일하면서 호주 JNFSoft라는 회사에서 개발자 겸 기술 번역가(영어->한국어)로 있습니다. 
 
-I am a programmer at JNFSoft and a Technical Translator(English to Korean), currently I'm mainly on an exciting unltrasound HIFU(high intensity focused ultrasound) project using CEF(Chromium Embedded Framework), HTML with react.js frontend, node.js based middleware, and C++ backend for controlling the ultrasound devices.
+I am a programmer at JNFSoft and a Technical Translator(English to Korean), and CTO at mobility42(South Korea).
 
 ## 경력
 
 호주에 사는 관계로 그냥 영문으로 적겠습니다.
 
-### Programmer @ JNF Soft (Mar 2017 – Present, Brisbane)
+### Programmer @ JNF Soft (Dec 2020 – Present, Brisbane) + mobility42
 - eYards merged into JNFSoft
-- same projects 
+- logistics software development
+
+### Programm @ JNF Soft (Mar 2017 - Dec 2020, Brisbane)
+- Ethereum based token(ERC-20 token) + multisig wallet contract code development
+- ERC-20 token distribution script
+- other crypt-currency based projects
 
 ### Programmer @ eYards (Mar 2015 – Mar 2017, Brisbane)
 
